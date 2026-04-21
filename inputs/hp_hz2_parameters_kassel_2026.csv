@@ -1,0 +1,29 @@
+parameter,value,notes
+location,Kassel,same as PV/weather
+year_weather,2019,proxy weather year (Kassel MERRA-2)
+year_export,2026,CSV datetime aligned to this year
+annual_hp_kwh_target,4500.0,kWh/year
+T_ref_C,17.0,Bayernwerk balance temperature
+profile_matrix_file,EVR_ProfilHZ2_retrieved_2026-02.xls,Energieversorgung Rottenburg; valid from 2011-08-01
+weather_input_file,weather_kassel_t2m_2019_hourly.csv,from notebook 04_weather_kassel_merra2_2019
+tmz_min,0,
+tmz_max,24,
+tmz_sum,3068.0,K
+scaling_a_kWh_per_K,1.4667535853976532,a = annual_kWh / sum(TMZ)
+formula_equivalent_temp,T_eq(d)=0.5*T_m(d)+0.3*T_m(d-1)+0.15*T_m(d-2)+0.05*T_m(d-3),Bayernwerk Eq.(1)
+formula_tmz,"TMZ(d)=ceil(T_ref-T_eq(d)); clip(0,34)",Bayernwerk Eq.(2)
+formula_scaling,a = annual_kWh / sum_d TMZ(d),Bayernwerk Eq.(3)
+formula_15min_energy,"E(t)[kWh] = 0.25h * PS(slot(t),TMZ(d)) [K/h] * a [kWh/K]",Bayernwerk Eq.(4)
+PS_units,K/h,sum over 96 slots = 4*TMZ
+opt_eta_COP,0.4,"COP quality grade, Stute air-to-water"
+opt_T_high_C,50.0,"Stute T_high,max [°C]"
+opt_T_amb_mean_C,9.64,Kassel 2019 annual mean [°C]
+opt_T_amb_max_C,36.86,Kassel 2019 max [°C]
+opt_COP_constant,3.2,"Stute Eq.(18) at Kassel 2019 mean T_amb, Kelvin"
+opt_q_losses_HS_per_h,0.002,HS standby 0.2 %/h (Stute)
+opt_HS_capacity_hours,2.0,"E_HS,max = 2h * Q_HP,max,th (Stute)"
+opt_Q_HP_max_el_kW,6.250627296,peak(power_kW) × 1.2; frozen at export time
+check_shape_ok,True,"expected (96, 35)"
+check_min_value,0.0,should be >= 0
+check_norm_max_abs_err,5.684341886080802e-14,max(|sum_slots - 4*TMZ|)
+check_norm_max_rel_err,4.440892098500626e-16,max rel error for TMZ>=1

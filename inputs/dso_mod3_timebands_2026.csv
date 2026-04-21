@@ -1,0 +1,21 @@
+DSO,quarter_group,band,start_hour,end_hour
+Westnetz,all,HT,15.0,20.0
+Westnetz,all,NT,0.0,7.0
+Bayernwerk,q2q3,HT,17.0,22.0
+Bayernwerk,q2q3,NT,10.0,15.0
+E.DIS,q1q4,HT,10.25,12.0
+E.DIS,q1q4,HT,16.75,20.25
+E.DIS,q1q4,NT,0.0,5.0
+E.DIS,q1q4,NT,23.5,24.0
+Netze BW,all,HT,17.0,22.0
+Netze BW,all,NT,10.0,14.0
+Stromnetz Berlin,all,HT,17.25,20.25
+Stromnetz Berlin,all,NT,22.25,6.5
+SH Netz,all,NT,0.0,5.0
+SH Netz,all,NT,22.0,24.0
+SH Netz,q1q4,HT,9.0,14.0
+SH Netz,q1q4,HT,17.0,21.0
+MITNETZ STROM,q1q4,HT,8.0,12.0
+MITNETZ STROM,q1q4,HT,17.0,19.0
+MITNETZ STROM,q1q4,NT,0.0,3.0
+MITNETZ STROM,q1q4,NT,19.0,24.0

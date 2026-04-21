@@ -1,0 +1,22 @@
+run_id,scenario_id,strategy,household_archetype,dso_id,annual_energy_kWh,cost_spot_net_eur,cost_dso_fixed_net_eur,cost_dso_volumetric_net_eur,cost_smart_operating_net_eur,cost_levies_pre_vat_eur,subtotal_net_eur,vat_eur,total_tcoe_eur
+1,no_flex_2_Westnetz_2026,no_flex,2,Westnetz,2664.24,-276.65,80.3,253.9,100.0,176.91,334.46,63.55,398.0
+2,no_flex_2_Bayernwerk_2026,no_flex,2,Bayernwerk,2664.24,-276.65,98.55,125.75,100.0,176.91,224.56,42.67,267.22
+3,no_flex_2_E.DIS_2026,no_flex,2,E.DIS,2664.24,-276.65,76.65,145.73,100.0,176.91,222.64,42.3,264.94
+4,no_flex_2_Netze BW_2026,no_flex,2,Netze BW,2664.24,-276.65,84.0,201.68,100.0,176.91,285.94,54.33,340.26
+5,no_flex_2_Stromnetz Berlin_2026,no_flex,2,Stromnetz Berlin,2664.24,-276.65,33.36,198.75,100.0,176.91,232.37,44.15,276.52
+6,no_flex_2_SH Netz_2026,no_flex,2,SH Netz,2664.24,-276.65,94.9,170.51,100.0,176.91,265.66,50.48,316.14
+7,no_flex_2_MITNETZ STROM_2026,no_flex,2,MITNETZ STROM,2664.24,-276.65,73.0,168.11,100.0,176.91,241.37,45.86,287.23
+8,dt_flex_2_Westnetz_2026,dt_flex,2,Westnetz,2664.24,-276.65,80.3,253.9,100.0,176.91,334.46,63.55,398.0
+9,dt_flex_2_Bayernwerk_2026,dt_flex,2,Bayernwerk,2664.24,-276.65,98.55,125.75,100.0,176.91,224.56,42.67,267.22
+10,dt_flex_2_E.DIS_2026,dt_flex,2,E.DIS,2664.24,-276.65,76.65,145.73,100.0,176.91,222.64,42.3,264.94
+11,dt_flex_2_Netze BW_2026,dt_flex,2,Netze BW,2664.24,-276.65,84.0,201.68,100.0,176.91,285.94,54.33,340.26
+12,dt_flex_2_Stromnetz Berlin_2026,dt_flex,2,Stromnetz Berlin,2664.24,-276.65,33.36,198.75,100.0,176.91,232.37,44.15,276.52
+13,dt_flex_2_SH Netz_2026,dt_flex,2,SH Netz,2664.24,-276.65,94.9,170.51,100.0,176.91,265.66,50.48,316.14
+14,dt_flex_2_MITNETZ STROM_2026,dt_flex,2,MITNETZ STROM,2664.24,-276.65,73.0,168.11,100.0,176.91,241.37,45.86,287.23
+15,tcoe_flex_2_Westnetz_2026,tcoe_flex,2,Westnetz,2664.24,-276.65,80.3,253.9,100.0,176.91,334.46,63.55,398.0
+16,tcoe_flex_2_Bayernwerk_2026,tcoe_flex,2,Bayernwerk,2664.24,-276.65,98.55,125.75,100.0,176.91,224.56,42.67,267.22
+17,tcoe_flex_2_E.DIS_2026,tcoe_flex,2,E.DIS,2664.24,-276.65,76.65,145.73,100.0,176.91,222.64,42.3,264.94
+18,tcoe_flex_2_Netze BW_2026,tcoe_flex,2,Netze BW,2664.24,-276.65,84.0,201.68,100.0,176.91,285.94,54.33,340.26
+19,tcoe_flex_2_Stromnetz Berlin_2026,tcoe_flex,2,Stromnetz Berlin,2664.24,-276.65,33.36,198.75,100.0,176.91,232.37,44.15,276.52
+20,tcoe_flex_2_SH Netz_2026,tcoe_flex,2,SH Netz,2664.24,-276.65,94.9,170.51,100.0,176.91,265.66,50.48,316.14
+21,tcoe_flex_2_MITNETZ STROM_2026,tcoe_flex,2,MITNETZ STROM,2664.24,-276.65,73.0,168.11,100.0,176.91,241.37,45.86,287.23

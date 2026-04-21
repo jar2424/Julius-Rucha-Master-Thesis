@@ -1,0 +1,11 @@
+parameter,value,notes
+E_EV_max_kWh,50.0,usable battery capacity
+P_EV_max_ch_kW,11.0,11 kW three-phase AC wallbox
+eta_EV_charge,0.9,AC–DC charging efficiency
+q_losses_EV,0.0001,0.01 %/h standby losses
+E_min_departure_kWh,25.0,50% of max; mobility constraint
+E_min_charge_kWh,10.0,20% of max; avoids deep discharge
+year_export,2026.0,CSV datetime alignment
+driving_kWh_per_weekday,10.0,outbound 5 kWh + return 5 kWh
+annual_driving_kWh,2610.0,computed from profile
+n_weekdays_2026,261.0,calendar year 2026

@@ -1,0 +1,16 @@
+parameter,value,unit,notes
+E_BSS_max_kWh,10.0,kWh,Usable battery capacity
+P_BSS_charge_max_kW,10.0,kW,"Max charging power (1C, Stute et al. 2024)"
+P_BSS_discharge_max_kW,10.0,kW,"Max discharging power (1C, Stute et al. 2024)"
+eta_BSS_charge,0.9746794344808963,—,One-way charging efficiency (√RTE)
+eta_BSS_discharge,0.9746794344808963,—,One-way discharging efficiency (√RTE)
+eta_roundtrip,0.9499999999999998,—,Round-trip efficiency (= 0.95 target)
+q_losses_BSS_per_h,0.0001,1/h,Standby self-discharge rate (0.01 %/h)
+soc_min_frac,0.2,—,Minimum SoC fraction (battery-health buffer)
+soc_max_frac,0.9,—,Maximum SoC fraction
+E_min_kWh,2.0,kWh,Absolute SoC lower bound
+E_max_kWh,9.0,kWh,Absolute SoC upper bound
+C_rate,1.0,1/h,C-rate at P_BSS_max
+model_state_update,E_BSS^t = (1-q*dt)*E_BSS^{t-1} + q*dt*E_min + eta_ch*P_PV_BSS^t*dt - (1/eta_dis)*P_BSS^t*dt,—,PV-only charging; E_min-anchored standby; forall t
+model_binary_mutex,"z^t in {0,1}; P_PV_BSS^t <= z^t*P_max; P_BSS^t <= (1-z^t)*P_max",—,No simultaneous charge and discharge; forall t
+model_SoC_bounds,E_min <= E_BSS^t <= E_max,—,Operational SoC window; forall t

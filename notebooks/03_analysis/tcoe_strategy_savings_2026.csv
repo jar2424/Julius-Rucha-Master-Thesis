@@ -1,0 +1,9 @@
+Archetype,no_flex (€/yr),dt_flex (€/yr),tcoe_flex (€/yr),Δ dt_flex vs no_flex (€),Δ tcoe_flex vs no_flex (€),Δ tcoe vs dt_flex (€)
+A1  Base,1310,1310,1310,0,0,0
+A2  Base+PV,307,307,307,0,0,0
+A3  Base+PV+BSS,7,-76,-170,83,177,94
+A4  Base+HP,2459,2313,2118,146,341,195
+A5  Base+EV,2317,1881,1763,435,554,118
+A6  Base+PV+HP,1333,1171,765,162,568,406
+A7  Base+PV+EV,1195,756,431,438,764,325
+A8  Full Stack,2006,1367,683,639,1322,684

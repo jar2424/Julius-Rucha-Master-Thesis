@@ -1,0 +1,22 @@
+# Python dependencies for the thesis computational bundle
+# Tested with Python 3.12 (Anaconda distribution)
+# Install with: pip install -r requirements.txt
+#
+# NOTE — Gurobi licence required:
+#   gurobipy is available via PyPI (pip install gurobipy) but a valid
+#   Gurobi licence file (gurobi.lic) must be present at ~/gurobi.lic.
+#   Academic licences are available free of charge at gurobi.com/academia.
+#   Without a Gurobi licence the solvers fall back to PuLP's bundled CBC.
+
+# Core data processing
+numpy>=2.1
+pandas>=2.2
+openpyxl>=3.1        # required by pandas for .xlsx read/write
+xlrd>=2.0            # required by pandas for legacy .xls read
+
+# Optimisation
+pulp>=3.3            # LP/MILP modelling layer (wraps Gurobi or CBC)
+gurobipy>=13.0       # Gurobi Python API — requires a valid Gurobi licence
+
+# Visualisation
+matplotlib>=3.10

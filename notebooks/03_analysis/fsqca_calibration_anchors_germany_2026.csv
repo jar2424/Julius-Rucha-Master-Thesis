@@ -1,0 +1,4 @@
+condition,full_in,crossover,full_out,direction
+LOW_NIR,0.404825,0.49265000000000003,0.595075,inverted (low NIR = high membership)
+MOD3_SIGNAL,11.81,8.559999999999999,8.074000000000002,direct (high spread = high membership)
+DSO_VOL_LEVEL,7.548,6.4,5.638,direct (high Arbeitspreis = high membership)

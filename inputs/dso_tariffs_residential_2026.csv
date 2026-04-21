@@ -1,0 +1,8 @@
+DSO,Arbeitspreis_ct_kWh,Grundpreis_EUR_year,Module1_rebate_EUR_year,Module2_ct_kWh,HT_ct_kWh,NT_ct_kWh,ST_ct_kWh,Spread_ct_kWh,Seasonality,Active_quarters,Window_type,Time_windows_HT_NT_ST
+Westnetz,9.53,80.3,-138.7,3.81,15.65,0.95,9.53,14.7,Year-round,Q1–Q4,Fixed year-round,"Year-round, fixed daily: HT 15:00–20:00, NT 00:00–07:00, ST 07:00–15:00 & 20:00–24:00."
+Bayernwerk,4.72,98.55,-123.18,1.89,9.03,0.47,4.72,8.56,Q2/Q3 only,Q2+Q3 only,Fixed (Q2/Q3),"Q2/Q3: HT 17:00–22:00, NT 10:00–15:00, ST other. Q1/Q4: ST only (base rate)."
+E.DIS,5.47,76.65,-108.25,2.19,8.8,0.55,5.47,8.25,Q1/Q4 only,Q1+Q4 only,Fixed (Q1/Q4),"Q1/Q4: HT 10:15–12:00, 16:45–20:15; NT 00:00–05:00, 23:30–24:00; ST other. Q2/Q3: ST only."
+Netze BW,7.57,84.0,-180.78,3.03,11.06,3.03,7.57,8.03,Year-round,Q1–Q4,Fixed year-round,"Year-round: HT 17:00–22:00, NT 10:00–14:00, ST 00:00–10:00, 14:00–17:00, 22:00–00:00."
+Stromnetz Berlin,7.46,33.36,-123.18,2.98,13.94,2.61,7.46,11.33,Year-round,Q1–Q4,Fixed year-round,"Year-round: HT 17:15–20:15, NT 22:15–06:30, ST 06:30–17:15, 20:15–22:15."
+SH Netz,6.4,94.9,-115.23,2.56,8.32,0.64,6.4,7.68,Q1/Q4 only,Q1+Q4 only,Fixed (Q1/Q4),"Q1/Q4: HT 09:00–14:00, 17:00–21:00; NT 00:00–05:00, 22:00–24:00; ST other. Q2/Q3: ST only."
+MITNETZ STROM,6.31,73.0,-114.55,2.52,12.62,0.69,6.31,11.93,Q1/Q4 only,Q1+Q4 only,Fixed (Q1/Q4),"Q1/Q4: HT 08:00–12:00, 17:00–19:00; NT 00:00–03:00, 19:00–24:00; ST other. Q2/Q3: ST only."
