@@ -10,7 +10,7 @@
 
 This repository contains the full computational bundle accompanying the thesis. It includes all input generation notebooks, frozen input time series, optimisation solver notebooks, frozen results, and analysis code — sufficient to audit, understand, and (if desired) reproduce every quantitative result reported in Chapters 3–5.
 
-The experimental design covers **8 household archetypes × 7 DSOs × 3 operational strategies = 168 model runs** for Germany, using 2025 spot prices and 2026 network tariffs. The central outputs are the Total Cost of Electricity (TCoE) decomposition, Net Flexibility Incentive (NFI), and Net Incentive Ratio (NIR) across all archetype–DSO cells, plus the fsQCA condition table used in Chapter 5, Section 5.6.
+The experimental design covers **8 household archetypes × 7 DSOs × 3 operational strategies = 168 model runs** for Germany, using 2025 spot prices and 2026 network tariffs. The central outputs are the Total Cost of Electricity (TCoE) decomposition, Net Flexibility Incentive (NFI), and Net Incentive Ratio (NIR) across all archetype–DSO cells, plus the fsQCA condition analysis.
 
 ---
 
