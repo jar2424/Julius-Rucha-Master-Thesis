@@ -160,7 +160,7 @@ The fsQCA outcome **LOW_NIR** is calibrated from the continuous NIR using the di
 | `bss_parameters_prosumer_10kwh_5kw_2026.csv` | `07_` | Stute et al. (2024), Table 4 |
 | `dso_tariffs_residential_2026.csv` | `08_` | Seven DSO official tariff publications, retrieved Feb 2026 |
 | `dso_mod3_timebands_2026.csv` | `08_` | DSO §14a Module 3 HT/NT/ST time-window specifications |
-| `residential_taxes_2026.csv` | `09_` | Vattenfall Business Magazin (2026); KAV §2 |
+| `residential_taxes_2026.csv` | `09_` | Vattenfall (2026); KAV §2 |
 
 Full source attribution and retrieval URLs are documented inside each notebook in `notebooks/01_input_generation/`.
 
