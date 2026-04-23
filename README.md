@@ -138,7 +138,7 @@ No Gurobi licence required for Step 3.
 
 | Metric | Formula | Interpretation |
 |---|---|---|
-| **NFI** (%) | `(TCoE_noflex − TCoE_tcoeflex) / TCoE_noflex × 100` | Max proportional bill saving from full-stack optimisation vs. rule-based baseline |
+| **NFI** (%) | `(TCoE_noflex − TCoE_tcoeflex)` | Max proportional bill saving from full-stack optimisation vs. rule-based baseline |
 | **NIR** | `(TCoE_noflex − TCoE_dtflex) / (TCoE_noflex − TCoE_tcoeflex)` | Fraction of full-stack saving captured by spot-only DT-flex |
 
 NIR = 1 → full alignment; NIR < 1 → dilution (spot signal undershoots full-stack incentive); NIR > 1 → amplification. NIR is undefined (reported as `NaN`) for Archetypes 1 and 2, which have no flexibility degrees of freedom.
