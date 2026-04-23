@@ -17,7 +17,7 @@ The experimental design covers **8 household archetypes × 7 DSOs × 3 operation
 ## 2. Requirements
 
 ### Python
-Python **3.12** is recommended (tested with Anaconda distribution). Install all dependencies with:
+Python **3.12** is recommended. Install all dependencies with:
 
 ```bash
 pip install -r requirements.txt
