@@ -10,7 +10,7 @@
 
 This repository contains the full computational bundle accompanying the thesis. It includes all input generation notebooks, frozen input time series, optimisation solver notebooks, frozen results, and analysis code — sufficient to audit, understand, and (if desired) reproduce every quantitative result reported in Chapters 3–5.
 
-The experimental design covers **8 household archetypes × 7 DSOs × 3 operational strategies = 168 model runs** for Germany, using 2025 spot prices and 2026 network tariffs. The central outputs are the Total Cost of Electricity (TCoE) decomposition, Net Flexibility Incentive (NFI), and Net Incentive Ratio (NIR) across all archetype–DSO cells, plus the fsQCA condition analysis.
+The experimental design covers **8 household archetypes × 7 DSOs × 3 operational strategies = 168 model runs** for Germany, using 2025 spot prices and 2026 network tariffs. The central outputs are the Total Cost of Electricity (TCoE) decomposition, Net Flexibility Incentive (NFI), and Net Incentive Ratio (NIR) across all archetype–DSO cells, plus the fuzzy-set QCA (fsQCA) pipeline: case-level conditions and calibrated **LOW_NIR** outcome, **configuration-level** sufficiency truth table, **necessity** screen, calibration anchors, and robustness checks — all implemented in `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` and exported as CSV artefacts beside that notebook.
 
 ---
 
@@ -80,15 +80,17 @@ All optimisation notebooks use **Gurobi** via `gurobipy`. A valid Gurobi licence
 │   │   ├── 07_archetype_base_pv_ev.ipynb        # Archetype 7: Base + PV + EV
 │   │   └── 08_archetype_base_pv_bss_hp_ev.ipynb # Archetype 8: Full Stack (MILP)
 │   │
-│   └── 03_analysis/                 # Downstream metrics and fsQCA calibration
-│       ├── 01_nfi_nir_fsqca.ipynb                          # NFI / NIR + fsQCA calibration
-│       ├── nfi_nir_germany_2026.csv                        # NFI / NIR for all 56 archetype–DSO cells
-│       ├── fsqca_conditions_germany_2026.csv               # fsQCA condition + outcome table (N = 42)
-│       ├── fsqca_calibration_anchors_germany_2026.csv      # Fuzzy calibration anchors (Appendix D)
-│       ├── 02_tcoe_summary_tables.ipynb                    # Monetary TCoE summary tables
-│       ├── tcoe_mean_spread_by_archetype_strategy_2026.csv # Mean TCoE + DSO spread per archetype × strategy
-│       ├── tcoe_flex_matrix_archetype_dso_2026.csv         # Full tcoe_flex matrix (archetype × DSO)
-│       └── tcoe_strategy_savings_2026.csv                  # Mean savings vs. no_flex by strategy
+│   └── 03_analysis/                 # NFI / NIR, fsQCA, and TCoE summary tables (CSV exports co-located here)
+│       ├── 01_nfi_nir_fsqca.ipynb   # Steps 1–11: consolidate runs → NFI/NIR → fsQCA → truth table → necessity → exports
+│       ├── nfi_nir_germany_2026.csv                      # 8×7 rows: TCoE by strategy + NFI_eur + NIR
+│       ├── fsqca_conditions_germany_2026.csv             # N = 42 flexible cases: crisp/fuzzy conditions + LOW_NIR
+│       ├── fsqca_calibration_anchors_germany_2026.csv    # p25 / median / p75 anchors (LOW_NIR, MOD3_SIGNAL, DSO_VOL_LEVEL)
+│       ├── fsqca_truth_table_germany_2026.csv            # Configuration-level sufficiency (16 populated rows)
+│       ├── fsqca_necessity_screen_germany_2026.csv       # Elementary necessity expressions vs. LOW_NIR
+│       ├── 02_tcoe_summary_tables.ipynb                  # Chapter 5.1–5.2 style monetary tables from outputs/
+│       ├── tcoe_mean_spread_by_archetype_strategy_2026.csv
+│       ├── tcoe_flex_matrix_archetype_dso_2026.csv
+│       └── tcoe_strategy_savings_2026.csv
 │
 ├── outputs/                         # Frozen solver results — available without re-running solvers
 │   ├── results_base_2026.csv                  # Archetype 1
@@ -122,13 +124,29 @@ Run each notebook in `notebooks/02_solver/` independently (order does not matter
 
 Expected runtime: 2–5 min (Archetypes 1–7) · up to 60 min (Archetype 8 full-stack MILP, Gurobi).
 
-**Step 3 — Compute NFI / NIR metrics and fsQCA calibration**
+**Step 3 — NFI / NIR, fsQCA, truth table, necessity screen (no Gurobi)**
 
-Run `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb`. This notebook:
-- reads all eight `outputs/results_*.csv` files
-- computes NFI and NIR for every archetype–DSO cell (Section 4.3)
-- constructs the five fsQCA conditions (BSS, HP, EV, MOD3_SIGNAL, DSO_VOL_LEVEL) and calibrates the LOW_NIR outcome using empirical percentile anchors (Section 4.8)
-- writes `nfi_nir_germany_2026.csv`, `fsqca_conditions_germany_2026.csv`, and `fsqca_calibration_anchors_germany_2026.csv`
+Run `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` from top to bottom (or “Run all”). The notebook is organised into **eleven** blocks (see the markdown headings inside the file):
+
+1. Load and stack all eight `outputs/results_*.csv` files.  
+2. Pivot to wide format (`TCoE_noflex`, `TCoE_dtflex`, `TCoE_tcoeflex`) and compute **NFI_eur** and **NIR** per archetype–DSO cell.  
+3. Summary diagnostics by archetype.  
+4. Build DSO-level signals from `inputs/dso_tariffs_residential_2026.csv`, construct the five fsQCA conditions, and apply **direct logistic calibration** (Ragin 2008) with empirical percentile anchors for LOW_NIR, MOD3_SIGNAL, and DSO_VOL_LEVEL.  
+5. Assemble the **N = 42** case-level fsQCA dataset (flexible archetypes only).  
+6. Publication-style figures (calibration curves, etc.).  
+7. Quality-assurance checks on membership scores.  
+8. **Configuration-level** truth table: group cases by crisp (BSS, HP, EV, MOD3, VOL) profile; compute sufficiency consistency / raw coverage at the 0.75 threshold (Schneider & Wagemann 2012).  
+9. **Necessity** screen for LOW_NIR (0.90 threshold).  
+10. Anchor **robustness** (e.g. 20/50/80 and 30/50/70 perturbations).  
+11. **Export** all artefacts to `notebooks/03_analysis/`:
+
+| File | Role |
+|------|------|
+| `nfi_nir_germany_2026.csv` | Full 56-cell NFI/NIR grid |
+| `fsqca_conditions_germany_2026.csv` | Case-level fsQCA input |
+| `fsqca_calibration_anchors_germany_2026.csv` | Anchors for Appendix / thesis tables |
+| `fsqca_truth_table_germany_2026.csv` | Sufficiency truth table (thesis Appendix B.3) |
+| `fsqca_necessity_screen_germany_2026.csv` | Necessity diagnostics (thesis Appendix B.4) |
 
 No Gurobi licence required for Step 3.
 
@@ -136,12 +154,12 @@ No Gurobi licence required for Step 3.
 
 ## 5. Metric Definitions
 
-| Metric | Formula | Interpretation |
+| Metric | Formula (per archetype–DSO cell) | Interpretation |
 |---|---|---|
-| **NFI** (%) | `(TCoE_noflex − TCoE_tcoeflex)` | Max proportional bill saving from full-stack optimisation vs. rule-based baseline |
-| **NIR** | `(TCoE_noflex − TCoE_dtflex) / (TCoE_noflex − TCoE_tcoeflex)` | Fraction of full-stack saving captured by spot-only DT-flex |
+| **NFI** (EUR/yr) | `TCoE_noflex − TCoE_tcoeflex` | Absolute annual bill saving from full-stack (TCoE-flex) optimisation vs. the no-flex baseline |
+| **NIR** | `(TCoE_noflex − TCoE_dtflex) / (TCoE_noflex − TCoE_tcoeflex)` | Share of that full-stack saving captured when the household instead follows spot-only (DT-flex) dispatch |
 
-NIR = 1 → full alignment; NIR < 1 → dilution (spot signal undershoots full-stack incentive); NIR > 1 → amplification. NIR is undefined (reported as `NaN`) for Archetypes 1 and 2, which have no flexibility degrees of freedom.
+NIR = 1 → full alignment between spot-only and full-stack incentives; NIR < 1 → **dilution** (the spot signal leaves part of the available saving on the table); NIR > 1 → amplification. NIR is undefined (stored as `NaN`) for Archetypes 1 and 2, which have no flexibility degrees of freedom (numerator and denominator are both zero).
 
 The fsQCA outcome **LOW_NIR** is calibrated from the continuous NIR using the direct logistic method (Ragin 2008), with anchors at the 25th percentile (full membership), median (crossover), and 75th percentile (full non-membership) of the N = 42 flexible-archetype NIR distribution.
 
@@ -168,14 +186,21 @@ Full source attribution and retrieval URLs are documented inside each notebook i
 
 ## 7. Thesis Chapter Mapping
 
+### 7.1 Manual bibliography links (`references_manual.bib`)
+
+Some thesis citations are **grey-literature / government web pages** and live in `Master_Thesis_2026/02_Obsidian_Vault/references_manual.bib` (loaded alongside `references.bib` in the LaTeX build). For auditability, the URL below is the one currently wired to the BibTeX key **`bmweStrompreisbestandteile`** (household electricity price composition; BMWK infographic based on the 2018 BNetzA/Bundeskartellamt monitoring report):
+
+- https://www.bmwk.de/Redaktion/DE/Infografiken/Energie/strompreise.html
+
 | Thesis chapter | Corresponding code / data |
 |---|---|
 | Chapter 3 — Data & Calibration | `notebooks/01_input_generation/` · `inputs/` |
 | Chapter 4 — Methodology & Model | `notebooks/02_solver/` |
 | Chapter 5 — Germany Results (TCoE) | `outputs/results_*.csv` |
 | Chapter 5 — TCoE results (Sections 5.1–5.2) | `notebooks/03_analysis/02_tcoe_summary_tables.ipynb` · `tcoe_mean_spread_*.csv` · `tcoe_flex_matrix_*.csv` |
-| Chapter 5 — NFI / NIR (Sections 5.3, 5.5) | `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` · `nfi_nir_germany_2026.csv` |
-| Chapter 5 — fsQCA (Section 5.6) | `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` · `fsqca_conditions_germany_2026.csv` |
-| Appendix D — fsQCA calibration anchors | `notebooks/03_analysis/fsqca_calibration_anchors_germany_2026.csv` |
+| Chapter 5 — NFI / NIR & fsQCA (main text + figures) | `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` · `nfi_nir_germany_2026.csv` · `fsqca_conditions_germany_2026.csv` |
+| Appendix B — Truth table (Appendix B.3) | `fsqca_truth_table_germany_2026.csv` |
+| Appendix B — Necessity screen (Appendix B.4) | `fsqca_necessity_screen_germany_2026.csv` |
+| Appendix — Calibration anchors | `fsqca_calibration_anchors_germany_2026.csv` |
 
 ---

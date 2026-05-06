@@ -1,0 +1,11 @@
+condition,necessity_consistency,necessary_at_0.90
+~EV,0.774,False
+HP,0.752,False
+DSO_VOL_LEVEL,0.689,False
+~BSS,0.615,False
+MOD3_SIGNAL,0.597,False
+~MOD3_SIGNAL,0.455,False
+~DSO_VOL_LEVEL,0.42,False
+BSS,0.385,False
+~HP,0.248,False
+EV,0.226,False
