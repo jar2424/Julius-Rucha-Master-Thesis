@@ -186,12 +186,6 @@ Full source attribution and retrieval URLs are documented inside each notebook i
 
 ## 7. Thesis Chapter Mapping
 
-### 7.1 Manual bibliography links (`references_manual.bib`)
-
-Some thesis citations are **grey-literature / government web pages** and live in `Master_Thesis_2026/02_Obsidian_Vault/references_manual.bib` (loaded alongside `references.bib` in the LaTeX build). For auditability, the URL below is the one currently wired to the BibTeX key **`bmweStrompreisbestandteile`** (household electricity price composition; BMWK infographic based on the 2018 BNetzA/Bundeskartellamt monitoring report):
-
-- https://www.bmwk.de/Redaktion/DE/Infografiken/Energie/strompreise.html
-
 | Thesis chapter | Corresponding code / data |
 |---|---|
 | Chapter 3 — Data & Calibration | `notebooks/01_input_generation/` · `inputs/` |
