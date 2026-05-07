@@ -10,7 +10,7 @@
 
 This repository contains the full computational bundle accompanying the thesis. It includes all input generation notebooks, frozen input time series, optimisation solver notebooks, frozen results, and analysis code — sufficient to audit, understand, and (if desired) reproduce every quantitative result reported in Chapters 3–5.
 
-The experimental design covers **8 household archetypes × 7 DSOs × 3 operational strategies = 168 model runs** for Germany, using 2025 spot prices and 2026 network tariffs. The central outputs are the Total Cost of Electricity (TCoE) decomposition, Net Flexibility Incentive (NFI), and Net Incentive Ratio (NIR) across all archetype–DSO cells, plus the fuzzy-set QCA (fsQCA) pipeline: case-level conditions and calibrated **LOW_NIR** outcome, **configuration-level** sufficiency truth table, **necessity** screen, calibration anchors, and robustness checks — all implemented in `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` and exported as CSV artefacts beside that notebook.
+The experimental design covers **8 household archetypes × 7 DSOs × 3 operational strategies = 168 model runs** for Germany, using 2025 spot prices and 2026 network tariffs. The central outputs are the Total Cost of Electricity (TCoE) decomposition, Net Flexibility Incentive (NFI), and Net Incentive Ratio (NIR) across all archetype–DSO cells, plus the fuzzy-set QCA (fsQCA) pipeline: case-level conditions and calibrated **LOW_NIR** outcome, **configuration-level** sufficiency truth table, **necessity** screen, calibration anchors, and robustness checks — implemented in `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` (NFI/NIR + fsQCA exports) and `notebooks/03_analysis/02_tcoe_summary_tables.ipynb` (Chapter 5 monetary summary tables), with CSV artefacts exported beside each notebook.
 
 ---
 
@@ -81,7 +81,7 @@ All optimisation notebooks use **Gurobi** via `gurobipy`. A valid Gurobi licence
 │   │   └── 08_archetype_base_pv_bss_hp_ev.ipynb # Archetype 8: Full Stack (MILP)
 │   │
 │   └── 03_analysis/                 # NFI / NIR, fsQCA, and TCoE summary tables (CSV exports co-located here)
-│       ├── 01_nfi_nir_fsqca.ipynb   # Steps 1–11: consolidate runs → NFI/NIR → fsQCA → truth table → necessity → exports
+│       ├── 01_nfi_nir_fsqca.ipynb   # Compute NFI/NIR and fsQCA exports (Germany 2026)
 │       ├── nfi_nir_germany_2026.csv                      # 8×7 rows: TCoE by strategy + NFI_eur + NIR
 │       ├── fsqca_conditions_germany_2026.csv             # N = 42 flexible cases: crisp/fuzzy conditions + LOW_NIR
 │       ├── fsqca_calibration_anchors_germany_2026.csv    # p25 / median / p75 anchors (LOW_NIR, MOD3_SIGNAL, DSO_VOL_LEVEL)
@@ -122,31 +122,11 @@ Run each notebook in `notebooks/02_solver/` independently (order does not matter
 - runs no-flex (rule-based), DT-flex (LP/MILP, spot signal), and TCoE-flex (LP/MILP, full cost stack) for all 7 DSOs
 - writes results to `outputs/results_<archetype>_2026.csv`
 
-Expected runtime: 2–5 min (Archetypes 1–7) · up to 60 min (Archetype 8 full-stack MILP, Gurobi).
+Expected runtime: 2–5 min (Archetypes 1–7) · about 10–15 min (Archetype 8 full-stack MILP, Gurobi).
 
-**Step 3 — NFI / NIR, fsQCA, truth table, necessity screen (no Gurobi)**
+**Step 3 — Compute NFI/NIR and fsQCA artefacts (no Gurobi)**
 
-Run `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` from top to bottom (or “Run all”). The notebook is organised into **eleven** blocks (see the markdown headings inside the file):
-
-1. Load and stack all eight `outputs/results_*.csv` files.  
-2. Pivot to wide format (`TCoE_noflex`, `TCoE_dtflex`, `TCoE_tcoeflex`) and compute **NFI_eur** and **NIR** per archetype–DSO cell.  
-3. Summary diagnostics by archetype.  
-4. Build DSO-level signals from `inputs/dso_tariffs_residential_2026.csv`, construct the five fsQCA conditions, and apply **direct logistic calibration** (Ragin 2008) with empirical percentile anchors for LOW_NIR, MOD3_SIGNAL, and DSO_VOL_LEVEL.  
-5. Assemble the **N = 42** case-level fsQCA dataset (flexible archetypes only).  
-6. Publication-style figures (calibration curves, etc.).  
-7. Quality-assurance checks on membership scores.  
-8. **Configuration-level** truth table: group cases by crisp (BSS, HP, EV, MOD3, VOL) profile; compute sufficiency consistency / raw coverage at the 0.75 threshold (Schneider & Wagemann 2012).  
-9. **Necessity** screen for LOW_NIR (0.90 threshold).  
-10. Anchor **robustness** (e.g. 20/50/80 and 30/50/70 perturbations).  
-11. **Export** all artefacts to `notebooks/03_analysis/`:
-
-| File | Role |
-|------|------|
-| `nfi_nir_germany_2026.csv` | Full 56-cell NFI/NIR grid |
-| `fsqca_conditions_germany_2026.csv` | Case-level fsQCA input |
-| `fsqca_calibration_anchors_germany_2026.csv` | Anchors for Appendix / thesis tables |
-| `fsqca_truth_table_germany_2026.csv` | Sufficiency truth table (thesis Appendix B.3) |
-| `fsqca_necessity_screen_germany_2026.csv` | Necessity diagnostics (thesis Appendix B.4) |
+Run `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` to compute the full Germany 2026 NFI/NIR grid and all fsQCA artefacts (conditions, calibration anchors, truth table, necessity screen) and export them as CSV files to `notebooks/03_analysis/`.
 
 No Gurobi licence required for Step 3.
 
@@ -193,8 +173,10 @@ Full source attribution and retrieval URLs are documented inside each notebook i
 | Chapter 5 — Germany Results (TCoE) | `outputs/results_*.csv` |
 | Chapter 5 — TCoE results (Sections 5.1–5.2) | `notebooks/03_analysis/02_tcoe_summary_tables.ipynb` · `tcoe_mean_spread_*.csv` · `tcoe_flex_matrix_*.csv` |
 | Chapter 5 — NFI / NIR & fsQCA (main text + figures) | `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` · `nfi_nir_germany_2026.csv` · `fsqca_conditions_germany_2026.csv` |
-| Appendix B — Truth table (Appendix B.3) | `fsqca_truth_table_germany_2026.csv` |
-| Appendix B — Necessity screen (Appendix B.4) | `fsqca_necessity_screen_germany_2026.csv` |
-| Appendix — Calibration anchors | `fsqca_calibration_anchors_germany_2026.csv` |
+| Appendix B — Calibration anchors (Appendix B.1) | `fsqca_calibration_anchors_germany_2026.csv` |
+| Appendix B — Truth table (Appendix B.2) | `fsqca_truth_table_germany_2026.csv` |
+| Appendix B — Necessity screen (Appendix B.3) | `fsqca_necessity_screen_germany_2026.csv` |
+| Appendix B — DSO condition scores (Appendix B.4) | `inputs/dso_tariffs_residential_2026.csv` |
+| Appendix B — Case-to-configuration map (Appendix B.5) | `fsqca_conditions_germany_2026.csv` |
 
 ---
