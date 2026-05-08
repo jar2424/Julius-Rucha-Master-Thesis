@@ -54,7 +54,7 @@ Start JupyterLab:
 If your browser does not open automatically, you can open JupyterLab manually at:
 
 ```bash
-open "http://localhost:8888/lab"
+http://localhost:8888/lab
 ```
 
 Once JupyterLab is running, the launcher should look similar to the following (file browser on the left with `inputs/`, `notebooks/`, and `outputs/` at the repository root):
