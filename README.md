@@ -48,8 +48,10 @@ pip install -r requirements.txt
 Start JupyterLab:
 
 ```bash
-jupyter lab
+python -m jupyterlab
 ```
+
+If you have Anaconda installed, avoid launching Jupyter via Anaconda Navigator (which may display Anaconda Cloud login prompts). The command above starts Jupyter from the active `.venv` and does **not** require an Anaconda account.
 
 Open the notebooks under `notebooks/` and run them as described in Section 4 (Execution Order).
 
