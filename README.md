@@ -54,7 +54,7 @@ Start JupyterLab:
 If your browser does not open automatically, you can open JupyterLab manually at:
 
 ```bash
-open "http://localhost:8888/lab"
+http://localhost:8888/lab
 ```
 
 Open the notebooks under `notebooks/` and run them as described in Section 4 (Execution Order).
