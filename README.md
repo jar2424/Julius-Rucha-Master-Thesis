@@ -31,7 +31,7 @@ All optimisation notebooks in `notebooks/02_solver/` use **Gurobi** via `gurobip
 
 2) **Open Terminal in the repository root**
 Open the unzipped folder that contains `requirements.txt` (it also contains `inputs/`, `notebooks/`, and `outputs/`).
-- Finder: right‑click inside the folder → **New Terminal at Folder**  
+- Finder: right‑click the folder → **Services** (German: **Dienste**) → **New Terminal at Folder** (German: **Neues Terminal beim Ordner**)  
   If you do not see that option: open Terminal, type `cd ` (with a trailing space), then drag the unzipped folder into the Terminal window and press Enter.
 
 3) **Create a clean environment and install dependencies**
