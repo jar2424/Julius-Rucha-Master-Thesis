@@ -22,7 +22,9 @@ Python **3.12** is recommended. Dependencies are listed in `requirements.txt` an
 ### Solver (Gurobi required to reproduce solvers)
 All optimisation notebooks in `notebooks/02_solver/` use **Gurobi** via `gurobipy` / PuLP. A valid academic Gurobi licence is required to reproduce the solver runs (see: [gurobi.com/academia](https://www.gurobi.com/academia/academic-program-and-licenses/)).
 
-![Gurobi academic licence options (portal screenshot)](assets/gurobi_academic_licence_options.png)
+This repository was reproduced on macOS with a **Named-User Academic** Gurobi licence.
+
+<img src="assets/gurobi_academic_licence_options.png" alt="Gurobi academic licence options (portal screenshot)" width="720">
 
 > **Reviewers who prefer not to re-run the solvers:** All solver outputs are pre-committed as frozen CSVs in `outputs/`. You can skip Step 2 and run only the analysis notebooks.
 
