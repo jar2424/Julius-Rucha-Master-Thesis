@@ -166,7 +166,7 @@ Expected runtime: 2–5 min (Archetypes 1–7) · about 10–15 min (Archetype 8
 
 **Step 3 — Compute NFI/NIR and fsQCA artefacts (no Gurobi)**
 
-Run `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` to compute the full Germany 2026 NFI/NIR grid and all fsQCA artefacts (conditions, calibration anchors, truth table, necessity screen) and export them as CSV files to `notebooks/03_analysis/`.
+Run `notebooks/03_analysis/01_nfi_nir_fsqca.ipynb` to compute the full Germany 2026 NFI/NIR grid and all fsQCA artefacts (conditions, calibration anchors, truth table, necessity screen) and export them as CSV files to `notebooks/03_analysis/`. Then run `notebooks/03_analysis/02_tcoe_summary_tables.ipynb` to reproduce the main summary tables derived from the TCoE outputs.
 
 No Gurobi licence required for Step 3.
 
