@@ -51,7 +51,7 @@ Start JupyterLab:
 python -m jupyterlab
 ```
 
-If you have Anaconda installed, avoid launching Jupyter via Anaconda Navigator (which may display Anaconda Cloud login prompts). The command above starts Jupyter from the active `.venv` and does **not** require an Anaconda account.
+If you have Anaconda installed, you may see an Anaconda Assistant “Create Account / Sign In” prompt inside JupyterLab (especially on first use). This sign-in is for Anaconda’s assistant features and is **not required** to open and run the notebooks for reproduction.
 
 Open the notebooks under `notebooks/` and run them as described in Section 4 (Execution Order).
 
