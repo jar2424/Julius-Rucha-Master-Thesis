@@ -63,7 +63,7 @@ http://localhost:8888/lab
 
 Once JupyterLab is running, the launcher should look similar to the following (file browser on the left with `inputs/`, `notebooks/`, and `outputs/` at the repository root):
 
-![JupyterLab launcher example](assets/jupyterlab_launcher_example.png)
+<img src="assets/jupyterlab_launcher_example.png" alt="JupyterLab launcher example" width="720">
 
 Open the notebooks under `notebooks/` and run them as described in Section 4 (Execution Order).
 
