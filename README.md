@@ -16,19 +16,49 @@ The experimental design covers **8 household archetypes × 7 DSOs × 3 operation
 
 ## 2. Requirements
 
-### Python
-Python **3.12** is recommended. Install all dependencies with:
+### Python (tested on macOS)
+Python **3.12** is recommended. Dependencies are listed in `requirements.txt` and installed with `pip`.
+
+### Solver (Gurobi required to reproduce solvers)
+All optimisation notebooks in `notebooks/02_solver/` use **Gurobi** via `gurobipy` / PuLP. A valid academic Gurobi licence is required to reproduce the solver runs (see: [gurobi.com/academia](https://www.gurobi.com/academia/academic-program-and-licenses/)).
+
+> **Reviewers who prefer not to re-run the solvers:** All solver outputs are pre-committed as frozen CSVs in `outputs/`. You can skip Step 2 and run only the analysis notebooks.
+
+### Quickstart (macOS, tested)
+1) **Download**
+- GitHub → **Code** → **Download ZIP**
+- Unzip locally. The folder name may vary.
+
+2) **Open Terminal in the repository root**
+Open the unzipped folder that contains `requirements.txt` (it also contains `inputs/`, `notebooks/`, and `outputs/`).
+- Finder: right‑click inside the folder → **New Terminal at Folder**  
+  If you do not see that option: open Terminal, type `cd ` (with a trailing space), then drag the unzipped folder into the Terminal window and press Enter.
+
+3) **Create a clean environment and install dependencies**
+Run:
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Key packages: `pandas`, `numpy`, `matplotlib`, `pulp`, `gurobipy`, `openpyxl`, `xlrd`.
+4) **Run notebooks**
+Start JupyterLab:
 
-### Solver
-All optimisation notebooks use **Gurobi** via `gurobipy`. A valid Gurobi licence is required to re-run the solver notebooks (academic licences are available free of charge at [gurobi.com/academia](https://www.gurobi.com/academia/academic-program-and-licenses/)).
+```bash
+jupyter lab
+```
 
-> **Reviewers who prefer not to re-run the solvers:** All solver outputs are pre-committed as frozen CSVs in `outputs/`. You can skip Steps 1 and 2 and run only the analysis notebook (Step 3).
+Open the notebooks under `notebooks/` and run them as described in Section 4 (Execution Order).
+
+### Windows / Linux (not validated by the author)
+The workflow is standard Python/Jupyter practice. Please follow your platform’s best practices (or consult an AI assistant / local IT support) to:
+- open a terminal in the repository root (folder containing `requirements.txt`),
+- create/activate a virtual environment,
+- install dependencies from `requirements.txt`,
+- launch Jupyter and run the notebooks.
 
 ---
 
