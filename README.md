@@ -57,6 +57,10 @@ If your browser does not open automatically, you can open JupyterLab manually at
 open "http://localhost:8888/lab"
 ```
 
+Once JupyterLab is running, the launcher should look similar to the following (file browser on the left with `inputs/`, `notebooks/`, and `outputs/` at the repository root):
+
+![JupyterLab launcher example](assets/jupyterlab_launcher_example.png)
+
 Open the notebooks under `notebooks/` and run them as described in Section 4 (Execution Order).
 
 ### Windows / Linux (not validated by the author)
