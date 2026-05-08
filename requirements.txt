@@ -23,7 +23,7 @@ ipykernel>=6.29
 
 # Optimisation
 pulp>=3.3            # LP/MILP modelling layer (wraps Gurobi or CBC)
-gurobipy>=13.0       # optional but recommended for speed; requires a valid Gurobi licence
+gurobipy>=13.0       # requires a valid Gurobi licence
 
 # Visualisation
 matplotlib>=3.10
