@@ -48,10 +48,14 @@ pip install -r requirements.txt
 Start JupyterLab:
 
 ```bash
-python -m jupyterlab
+./.venv/bin/python -m jupyterlab
 ```
 
-If you have Anaconda installed, you may see an Anaconda Assistant “Create Account / Sign In” prompt inside JupyterLab (especially on first use). This sign-in is for Anaconda’s assistant features and is **not required** to open and run the notebooks for reproduction.
+If your browser does not open automatically, you can open JupyterLab manually at:
+
+```bash
+open "http://localhost:8888/lab"
+```
 
 Open the notebooks under `notebooks/` and run them as described in Section 4 (Execution Order).
 
