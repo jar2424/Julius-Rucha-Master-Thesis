@@ -184,13 +184,15 @@ No Gurobi licence required for Step 3.
 | `pv_kassel_10kwp_2026_15min.csv` | `03_` | renewables.ninja (MERRA-2, 2019), 10 kWp Kassel |
 | `weather_kassel_t2m_2019_hourly.csv` | `04_` | renewables.ninja (MERRA-2, 2019), 2 m air temperature |
 | `hp_kassel_hz2_2026_15min.csv` | `05_` | Bayernwerk HZ2 methodology + EVR profile matrix, 4,500 kWh/year |
-| `ev_profile_representative_50kwh_11kw_2026_15min.csv` | `06_` | Stylised commuter pattern, Stute et al. (2024) |
-| `bss_parameters_prosumer_10kwh_5kw_2026.csv` | `07_` | Stute et al. (2024) |
+| `ev_profile_representative_50kwh_11kw_2026_15min.csv` | `06_` | Stylised commuter pattern; EV parameter defaults documented against Stute et al. (2024) — full reference below |
+| `bss_parameters_prosumer_10kwh_5kw_2026.csv` | `07_` | Li-ion prosumer BSS defaults (Table 4) from Stute et al. (2024) — full reference below |
 | `dso_tariffs_residential_2026.csv` | `08_` | Seven DSO official tariff publications, retrieved Feb 2026 |
 | `dso_mod3_timebands_2026.csv` | `08_` | DSO §14a Module 3 HT/NT/ST time-window specifications |
 | `residential_taxes_2026.csv` | `09_` | Vattenfall (2026); KAV §2 |
 
 Full source attribution and retrieval URLs are documented inside each notebook in `notebooks/01_input_generation/`.
+
+**Household flexibility methods reference (EV, BSS, HP optimisation layer):** Stute, J., Pelka, S., Kühnbach, M., & Klobasa, M. (2024). Assessing the conditions for economic viability of dynamic electricity retail tariffs for households. *Advances in Applied Energy*, 14, 100174. https://doi.org/10.1016/j.adapen.2024.100174
 
 ---
 
