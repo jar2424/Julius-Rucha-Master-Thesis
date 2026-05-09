@@ -34,7 +34,6 @@ This repository was reproduced on macOS with a **Named-User Academic** Gurobi li
 - Unzip locally. The folder name may vary.
 
 2) **Open Terminal in the repository root**
-Open the unzipped folder that contains `requirements.txt` (it also contains `inputs/`, `notebooks/`, and `outputs/`).
 - Finder: right‑click the folder → **Services** (German: **Dienste**) → **New Terminal at Folder** (German: **Neues Terminal beim Ordner**)  
   If you do not see that option: open Terminal, type `cd ` (with a trailing space), then drag the unzipped folder into the Terminal window and press Enter.
 
