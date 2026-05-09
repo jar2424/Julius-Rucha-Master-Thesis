@@ -156,7 +156,7 @@ Steps 1 and 2 are **optional** — all inputs and outputs are pre-committed as f
 
 **Step 1 — (Optional) Regenerate input time series**
 
-Run notebooks in `notebooks/01_input_generation/` in any order. Each notebook documents its raw data source (see Section 6) and writes to `inputs/`.
+Run notebooks in `notebooks/01_input_generation/` in any order. Each notebook documents its raw data source (see Section 5) and writes to `inputs/`.
 
 **Step 2 — (Optional) Re-run solvers**
 
@@ -175,20 +175,7 @@ No Gurobi licence required for Step 3.
 
 ---
 
-## 5. Metric Definitions
-
-| Metric | Formula (per archetype–DSO cell) | Interpretation |
-|---|---|---|
-| **NFI** (EUR/yr) | `TCoE_noflex − TCoE_tcoeflex` | Absolute annual bill saving from full-stack (TCoE-flex) optimisation vs. the no-flex baseline |
-| **NIR** | `(TCoE_noflex − TCoE_dtflex) / (TCoE_noflex − TCoE_tcoeflex)` | Share of that full-stack saving captured when the household instead follows spot-only (DT-flex) dispatch |
-
-NIR = 1 → full alignment between spot-only and full-stack incentives; NIR < 1 → **dilution** (the spot signal leaves part of the available saving on the table); NIR > 1 → amplification. NIR is undefined (stored as `NaN`) for Archetypes 1 and 2, which have no flexibility degrees of freedom (numerator and denominator are both zero).
-
-The fsQCA outcome **LOW_NIR** is calibrated from the continuous NIR using the direct logistic method (Ragin 2008), with anchors at the 25th percentile (full membership), median (crossover), and 75th percentile (full non-membership) of the N = 42 flexible-archetype NIR distribution.
-
----
-
-## 6. Data Sources
+## 5. Data Sources
 
 | Input file | Notebook | Primary source |
 |---|---|---|
@@ -207,7 +194,7 @@ Full source attribution and retrieval URLs are documented inside each notebook i
 
 ---
 
-## 7. Thesis Chapter Mapping
+## 6. Thesis Chapter Mapping
 
 | Thesis chapter | Corresponding code / data |
 |---|---|
