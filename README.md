@@ -192,8 +192,6 @@ No Gurobi licence required for Step 3.
 
 Full source attribution and retrieval URLs are documented inside each notebook in `notebooks/01_input_generation/`.
 
-**Household flexibility methods reference (EV, BSS, HP optimisation layer):** Stute, J., Pelka, S., Kühnbach, M., & Klobasa, M. (2024). Assessing the conditions for economic viability of dynamic electricity retail tariffs for households. *Advances in Applied Energy*, 14, 100174. https://doi.org/10.1016/j.adapen.2024.100174
-
 ---
 
 ## 6. Thesis Chapter Mapping
