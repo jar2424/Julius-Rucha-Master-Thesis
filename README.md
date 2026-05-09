@@ -156,7 +156,7 @@ Steps 1 and 2 are **optional** — all inputs and outputs are pre-committed as f
 
 **Step 1 — (Optional) Regenerate input time series**
 
-Run notebooks in `notebooks/01_input_generation/` in any order. Each notebook documents its raw data source (see Section 5) and writes to `inputs/`.
+Run notebooks in `notebooks/01_input_generation/` in any order. Each notebook documents its raw data source (see Section 6) and writes to `inputs/`.
 
 **Step 2 — (Optional) Re-run solvers**
 
